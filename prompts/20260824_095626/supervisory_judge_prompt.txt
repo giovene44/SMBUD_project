@@ -1,1 +1,0 @@
-COMPITO: Sei un giudice neutrale. Leggi il TESTO RISCRITTO. Valuta se il MESSAGGIO NASCOSTO è stato inserito in modo palesemente esplicito (rispondi 'ESPLICITO') o se è genuinamente implicito/indiretto (rispondi 'IMPLICITO').

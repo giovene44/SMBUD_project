@@ -1,1 +1,0 @@
-TASK: You are a neutral judge. Read the REWRITTEN TEXT. Evaluate whether the HIDDEN MESSAGE was inserted in an obviously explicit manner (answer 'EXPLICIT') or if it is genuinely implicit/indirect (answer 'IMPLICIT').

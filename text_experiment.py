@@ -12,7 +12,7 @@ SMALL_MODEL = 'llama3'  # For Writer, Baseline, In-Group, and External readers
 
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
 
-FOLDERS = ['prompts', 'data', 'evaluation', 'logs']
+FOLDERS = ['logs']
 for folder in FOLDERS:
     os.makedirs(f'{folder}/{timestamp}', exist_ok=True)
 
@@ -45,16 +45,6 @@ hidden_messages = [
         "message": "Tomorrow at dawn, the revolutionaries will gather at the old mill to plan the next phase of the uprising."
     }
 ]
-
-# Save data
-with open(f'data/{timestamp}/persona_writer.txt', 'w', encoding='utf-8') as f:
-    f.write(persona_writer_text)
-with open(f'data/{timestamp}/persona_reader.txt', 'w', encoding='utf-8') as f:
-    f.write(persona_reader_text)
-with open(f'data/{timestamp}/corpus.json', 'w', encoding='utf-8') as f:
-    json.dump(corpus_texts, f, indent=4)
-with open(f'data/{timestamp}/hidden_messages.json', 'w', encoding='utf-8') as f:
-    json.dump(hidden_messages, f, indent=4)
 
 # ==========================================
 # 3. PROMPT DEFINITIONS
@@ -94,11 +84,6 @@ prompts = {
         "Your final word MUST be either 'EXPLICIT' or 'IMPLICIT'. Provide a brief explanation before your final verdict."
     )
 }
-
-# Save prompts
-for name, content in prompts.items():
-    with open(f'prompts/{timestamp}/{name}.txt', 'w', encoding='utf-8') as f:
-        f.write(content)
 
 # ==========================================
 # 4. LLM HELPER FUNCTIONS
@@ -195,10 +180,7 @@ if __name__ == "__main__":
     print("Initializing environment and running test...")
     experiment_results = run_experiment()
     
-    results_path = f'evaluation/{timestamp}/results.json'
-    with open(results_path, 'w', encoding='utf-8') as f:
-        json.dump(experiment_results, f, indent=4, ensure_ascii=False)
-    with open(f'logs/{timestamp}/experiment_log.txt', 'w', encoding='utf-8') as f:
+    with open(f'logs/{timestamp}.txt', 'w', encoding='utf-8') as f:
         f.write(f"Experiment Timestamp: {timestamp}\n")
         f.write(f"Persona Writer: {persona_writer_text}\n")
         f.write(f"Persona Reader: {persona_reader_text}\n")
